@@ -7,7 +7,7 @@ router.get('/current-video/:time', async (req, res) => {
 
     const currentTime = req.params.time;
 
-    const video = await Video.find({
+    const video = await Video.findOne({
         time: currentTime
     });
 
@@ -15,7 +15,7 @@ router.get('/current-video/:time', async (req, res) => {
         res.status(500).send("No video");
     }
 
-    res.status(200).send(video);
+    res.status(200).json(video);
 });
 
 module.exports = router;

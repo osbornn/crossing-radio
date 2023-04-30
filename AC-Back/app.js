@@ -1,6 +1,7 @@
 require('dotenv').config({path: './ac-back-db.env'});
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require("cors");
 const app = express();
 
 const db_uri = process.env.RADIOCROSSING_DB;
@@ -16,6 +17,7 @@ mongoose.connect(db_uri, {useNewUrlParser: true, useUnifiedTopology: true})
         console.error(error.message);
     });
 
+app.use(cors());
 app.use('/api', videoRoutes);
 
 //Start server

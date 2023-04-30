@@ -4,11 +4,13 @@
   "description": "Backend for Crossing Radio",
   "main": "index.js",
   "scripts": {
-    "test": "test-ac"
+    "test": "test-ac",
+    "start": "node app.js"
   },
   "author": "osb0rn_",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.0.4"
