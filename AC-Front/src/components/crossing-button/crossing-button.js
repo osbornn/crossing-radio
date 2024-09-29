@@ -1,10 +1,10 @@
 import React from 'react';
 import './crossing-button.css';
 
-const CrossingButton = ({text, onClick}) => {
+const CrossingButton = ({isSubmit, text, onClick}) => {
 
     return (
-        <button onClick={onClick} className='crossing-button'>
+        <button type={isSubmit ? 'submit' : 'button'} onClick={onClick} className='crossing-button'>
             {text}
         </button>
     );

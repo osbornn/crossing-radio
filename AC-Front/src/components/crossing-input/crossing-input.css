@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url(../../../public/fonts/COMIC.TTF);
+}
+
+label {
+    font-family: 'Comic Sans MS';
+    -webkit-text-stroke: 0.5px #8de0f9;
+    color: black;
+    font-weight: 2;
+    font-size: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+.crossing-input {
+    width: 230px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    background-color: #fef5e7; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    font-size: 16px;
+    font-family: 'Comic Sans MS';
+    color: #004d73; 
+    transition: all 0.3s ease;
+    outline: none;
+}

@@ -1,0 +1,26 @@
+.profile-pic {
+    width: 100px;
+}
+
+.go-back {
+    position: absolute;
+    left: 5%;
+    top: 9%;
+    cursor: pointer;
+}
+
+.register-button {
+    margin-top: 20px;
+}
+
+.switch-login-register {
+    font-family: 'Comic Sans MS';
+    color: black;
+    font-weight: 2;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.switch-login-register:hover {
+    -webkit-text-stroke: 1px #8de0f9;
+}

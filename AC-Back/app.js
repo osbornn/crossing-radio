@@ -8,6 +8,7 @@ const db_uri = process.env.RADIOCROSSING_DB;
 console.log(db_uri);
 
 const videoRoutes = require('./routes/video-routes');
+const userRoutes = require('./routes/user-routes');
 
 mongoose.connect(db_uri, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
@@ -18,7 +19,9 @@ mongoose.connect(db_uri, {useNewUrlParser: true, useUnifiedTopology: true})
     });
 
 app.use(cors());
+app.use(express.json());
 app.use('/api', videoRoutes);
+app.use('/api', userRoutes);
 
 //Start server
 const PORT = 8080;
