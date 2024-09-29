@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url(../../../public/fonts/COMIC.TTF);
+}
+
+.crossing-button {
+    background-color: #61dafb; 
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 10%; 
+    cursor: pointer;
+    font-family: 'Comic Sans MS';
+    font-weight: 2;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .crossing-button:hover {
+    transform: scale(1.1);
+  }
+  

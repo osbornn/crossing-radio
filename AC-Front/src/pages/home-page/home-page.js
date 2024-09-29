@@ -1,53 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './home-page.css';
 import YtCrossingVideo from '../../components/yt-crossing-video/yt-crossing-video';
+import CrossingButton from '../../components/crossing-button/crossing-button';
 
-class Home extends React.Component {
+const Home = () => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            url: "",
-            title: "",
-            currentTime: new Date().getHours()
-        };
-    }
+    const navigate = useNavigate();
+    const [url, setUrl] = useState('');
+    const [title, setTitle] = useState('');
+    const [currentTime, setCurrentTime] = useState(new Date().getHours());
 
-    getCurrentAcVideo() {
-        fetch(`http://localhost:8080/api/current-video/${this.state.currentTime}`, {method: 'get'})
+    const getCurrentAcVideo = () => {
+        fetch(`http://localhost:8080/api/current-video/${currentTime}`, {method: 'get'})
             .then(response => response.json())
             .then((data) => {
-                this.setState({url: data.url, title: data.title});
+                setUrl(data.url);
+                setTitle(data.title);
             })
             .catch(error => console.error('Error : ' + error.message));
-    }
+    };
 
-    componentDidMount() {
+    useEffect(() => {
         //We get the current local time (in hours)
-        this.getCurrentAcVideo();
+        getCurrentAcVideo();
 
         setInterval(() => {
             const currentRealTime = new Date().getHours();
-            if(currentRealTime !== this.state.currentTime) {
-                this.setState({currentTime: currentRealTime});
+            if(currentRealTime !== currentTime) {
+                setCurrentTime(currentRealTime);
             }
         }, 60000)
-    }
+    });
 
-    componentDidUpdate(prevProps, prevState) {
-        if(this.state.currentTime !== prevState.currentTime) {
-            this.getCurrentAcVideo();
-        }
-    }
+    useEffect(() => {
+        getCurrentAcVideo();
+    }, [currentTime]);
 
-    render() {
-        return (
-            <div>
-                 <h1>Radio Crossing</h1>
-                 <YtCrossingVideo title={this.state.title} url={this.state.url}></YtCrossingVideo>
+    return (
+        <div>
+            <div className='homepage-header'>
+                <h1>Radio Crossing</h1>
+                <div className='auth-button-gap'>
+                    <CrossingButton onClick={() => navigate('/register')} text='Sign Up'/>
+                </div>
             </div>
-        )
-    }
+            <YtCrossingVideo title={title} url={url}></YtCrossingVideo>
+        </div>
+    );
 }
 
 export default Home;
