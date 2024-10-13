@@ -84,7 +84,7 @@ const AuthenticationMenu = () => {
             </span>
 
             <div className='crossing-profile'>
-                <img className='profile-pic' src={isabelleProfilePic} alt='Profile Picture'/>
+                <img className='profile-pic' src={isabelleProfilePic} alt=''/>
             </div>
 
             <form onSubmit={isRegistering ? (e) => handleRegister(e, username, password) : (e) => handleLogin(e, username, password)}>
