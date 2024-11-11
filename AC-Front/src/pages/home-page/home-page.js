@@ -22,7 +22,7 @@ const Home = () => {
         const verifyToken = async () => {
             if(token) {
                 try {
-                    const response = await fetch('http://localhost:8080/api/verifyToken', {
+                    const response = await fetch(process.env.REACT_APP_CROSSING_API_URL + '/api/verifyToken', {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,
@@ -56,7 +56,7 @@ const Home = () => {
     };
 
     const getCurrentAcVideo = useCallback(() => {
-        fetch(`http://localhost:8080/api/current-video/${currentTime}`, {method: 'get'})
+        fetch(process.env.REACT_APP_CROSSING_API_URL + `/api/current-video/${currentTime}`, {method: 'get'})
             .then(response => response.json())
             .then((data) => {
                 setUrl(data.url);
