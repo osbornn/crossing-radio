@@ -1,13 +1,12 @@
-version: '3.8'
 services:
-  AC-Front:
+  ac-front:
     build: ./AC-Front
     ports:
       - "80:80"
     depends_on:
-      - AC-Back
+      - ac-back
 
-  AC-Back:
+  ac-back:
     build: ./AC-Back
     ports:
       - "5000:5000"
