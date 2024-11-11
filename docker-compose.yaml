@@ -3,13 +3,13 @@ services:
   AC-Front:
     build: ./AC-Front
     ports:
-      -"80:80"
+      - "80:80"
     depends_on:
       - AC-Back
 
   AC-Back:
     build: ./AC-Back
     ports:
-      -"5000:5000"
+      - "5000:5000"
     env_file:
       - ./AC-Back/ac-back-db.env
