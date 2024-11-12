@@ -2,7 +2,7 @@ services:
   ac-front:
     build: ./AC-Front
     ports:
-      - "80:80"
+      - "3000:3000"
     depends_on:
       - ac-back
 
