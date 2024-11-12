@@ -31,5 +31,5 @@ services:
       - ac-network
 
 networks:
-  app-network:
+  ac-network:
     driver: bridge
