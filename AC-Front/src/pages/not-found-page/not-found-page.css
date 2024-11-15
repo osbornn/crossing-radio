@@ -1,0 +1,10 @@
+.kk-error-message {
+    font-size: 23px;
+    -webkit-text-stroke: 0.5px #8de0f9;
+}
+
+.kk-error-image {
+    margin-top: 5%;
+    width: 40%;
+    box-shadow: 0px 4px 10px;
+}
