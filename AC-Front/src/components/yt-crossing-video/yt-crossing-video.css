@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'Work Sans';
-    src: url(../../../public/fonts/work-sans/static/WorkSans-Light.ttf);
-}
-
 .crossingVideo {
     position: relative;
     margin-right: 35%;

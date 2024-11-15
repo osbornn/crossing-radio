@@ -2,13 +2,6 @@
     width: 100px;
 }
 
-.go-back {
-    position: absolute;
-    left: 5%;
-    top: 9%;
-    cursor: pointer;
-}
-
 .register-button {
     margin-top: 20px;
 }

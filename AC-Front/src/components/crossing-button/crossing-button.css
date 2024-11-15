@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'Comic Sans MS';
-    src: url(../../../public/fonts/COMIC.TTF);
-}
-
 .crossing-button {
     background-color: #61dafb; 
     border: none;

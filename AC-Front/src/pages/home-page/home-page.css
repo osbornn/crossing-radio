@@ -1,27 +1,3 @@
-@font-face {
-    font-family: 'Comic Sans MS';
-    src: url(../../../public/fonts/COMIC.TTF);
-}
-
-body {
-    background-image: url(../../assets/crossing-bg2.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-h1 {
-    font-family: 'Comic Sans MS';
-    -webkit-text-stroke: 2px #8de0f9;
-    color: black;
-    font-weight: 2;
-    font-size: 60px;
-}
-
-p {
-    font-family: 'Comic Sans MS';
-    color: black;
-}
-
 .homepage-header {
     display: flex;
     justify-content: right;
