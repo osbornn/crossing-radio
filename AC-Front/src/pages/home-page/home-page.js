@@ -4,6 +4,7 @@ import './home-page.css';
 import YtCrossingVideo from '../../components/yt-crossing-video/yt-crossing-video';
 import CrossingButton from '../../components/crossing-button/crossing-button';
 import isabelleProfilePic from '../../assets/isabelle_profile_pic.jpg';
+import ChatWindow from '../../components/chat-window/chat-window';
 
 const Home = () => {
 
@@ -11,6 +12,7 @@ const Home = () => {
     const [url, setUrl] = useState('');
     const [title, setTitle] = useState('');
     const [userName, setUserName] = useState('');
+    const [userId, setUserId] = useState('');
     const [currentTime, setCurrentTime] = useState(new Date().getHours());
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -40,6 +42,7 @@ const Home = () => {
                         const payload = token.split('.')[1];
                         const decodedPayload = JSON.parse(atob(payload));
                         setUserName(decodedPayload.username);
+                        setUserId(decodedPayload.userId);
                     }
                 } catch(error) {
                     console.error('There was an error during token verification', error);
@@ -103,7 +106,10 @@ const Home = () => {
                 </div>}
 
             </div>
-            <YtCrossingVideo title={title} url={url}></YtCrossingVideo>
+            <div className='video-chat'>
+                <YtCrossingVideo title={title} url={url}></YtCrossingVideo>
+                {isLoggedIn && <ChatWindow userId={userId} username={userName}></ChatWindow>}
+            </div>
         </div>
     );
 }

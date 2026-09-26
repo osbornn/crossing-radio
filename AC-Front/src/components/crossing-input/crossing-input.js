@@ -7,6 +7,7 @@ const CrossingInput = (props) => {
     const inputType = props.inputType;
     const inputValue = props.inputValue;
     const htmlFor = props.htmlFor;
+    const placeholder = props.placeholder;
     
     return (
         <div className="input-container">
@@ -16,7 +17,9 @@ const CrossingInput = (props) => {
                 type={inputType}
                 id={htmlFor}
                 value={inputValue}
+                placeholder={placeholder}
                 onChange={props.onChange}
+                style={{width: props.width}}
                 required
             />
         </div>

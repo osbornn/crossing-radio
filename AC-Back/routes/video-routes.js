@@ -14,8 +14,9 @@ router.get('/current-video/:time', async (req, res) => {
     if(!video) {
         res.status(500).send("No video");
     }
-
-    res.status(200).json(video);
+    else {
+        res.status(200).json(video);
+    }
 });
 
 module.exports = router;

@@ -23,3 +23,12 @@
     margin-top: 10%;
     cursor: pointer;
 }
+
+.video-chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px 400px;
+}

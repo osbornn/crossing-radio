@@ -1,4 +1,3 @@
-import React from "react";
 import YouTube from 'react-youtube';
 import './yt-crossing-video.css';
 import AcLeaf from '../../assets/Animal_Crossing_Leaf.svg';

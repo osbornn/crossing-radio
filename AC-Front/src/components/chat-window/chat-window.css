@@ -1,0 +1,45 @@
+.crossing-chat-title {
+    padding: 20px;
+    width: 500px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.chat-box {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #fef5e7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    height: 400px;
+    overflow-y: scroll;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.chat-box::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 20px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background: #b6a68b;
+  border-radius: 10px;
+}
+
+.chat-history {
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.chat-bubble {
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.chat-input {
+    margin-bottom: 2%;
+}

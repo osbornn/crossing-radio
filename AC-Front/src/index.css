@@ -31,9 +31,13 @@ h1 {
   font-size: 60px;
 }
 
-p {
+h2, p, span, strong {
   font-family: 'Comic Sans MS';
   color: black;
+}
+
+p {
+  font-weight: 2;
 }
 
 .go-back {
