@@ -1,5 +1,13 @@
+.auth-menu {
+    width: calc(100% - 32px);
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
 .profile-pic {
-    width: 100px;
+    width: min(100px, 35vw);
+    max-width: 100%;
 }
 
 .register-button {
@@ -16,4 +24,19 @@
 
 .switch-login-register:hover {
     -webkit-text-stroke: 1px #8de0f9;
+}
+
+.switch-login-register {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+    .auth-menu h1 {
+        margin-top: 48px;
+        font-size: 34px;
+    }
+
+    .switch-login-register {
+        font-size: 18px;
+    }
 }

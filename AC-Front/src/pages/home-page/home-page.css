@@ -1,14 +1,17 @@
 .homepage-header {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
 }
 
 .auth-margin {
     display: flex;
+    align-items: center;
     gap: 15px;
-    margin-right: 5%;
-    margin-left: 25%;
 }
 
 .login-pic {
@@ -27,8 +30,56 @@
 .video-chat {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
     max-width: 1200px;
-    margin: 20px 400px;
+    width: calc(100% - 48px);
+    margin: 20px auto;
+}
+
+.video-chat > div:first-child {
+    flex: 1 1 640px;
+    min-width: 0;
+}
+
+@media (max-width: 767px) {
+    .homepage-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    .homepage-header h1 {
+        width: 100%;
+        margin: 12px 0 0;
+        text-align: center;
+    }
+
+    .auth-margin {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .login-pic {
+        width: 48px;
+    }
+
+    .username,
+    .logout-icon {
+        margin-top: 0;
+    }
+
+    .video-chat {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+        width: calc(100% - 32px);
+        margin: 12px auto 24px;
+    }
+
+    .video-chat > div:first-child {
+        flex-basis: auto;
+        width: 100%;
+    }
 }

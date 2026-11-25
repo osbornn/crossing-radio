@@ -1,12 +1,28 @@
 .crossingVideo {
     position: relative;
-    margin-right: 35%;
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.crossingVideo iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
 }
 
 .videoTitle {
     font-family: 'Work Sans';
     position: relative;
     font-size: 140%;
+}
+
+.videoTitle p {
+    margin: 12px 0;
+    overflow-wrap: anywhere;
 }
 
 #acLeaf {
