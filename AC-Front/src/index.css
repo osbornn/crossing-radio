@@ -25,6 +25,9 @@ body {
   background-image: url(assets/crossing-bg2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 h1 {
