@@ -1,6 +1,6 @@
 .homepage-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
     gap: 16px;
     max-width: 1200px;
@@ -8,10 +8,18 @@
     padding: 12px 24px;
 }
 
+.homepage-header h1 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
 .auth-margin {
     display: flex;
     align-items: center;
     gap: 15px;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
 }
 
 .login-pic {

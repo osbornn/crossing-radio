@@ -11,6 +11,7 @@ const Home = () => {
     const navigate = useNavigate();
     const [url, setUrl] = useState('');
     const [title, setTitle] = useState('');
+    const [videoStatus, setVideoStatus] = useState('loading');
     const [userName, setUserName] = useState('');
     const [userId, setUserId] = useState('');
     const [currentTime, setCurrentTime] = useState(new Date().getHours());
@@ -58,14 +59,27 @@ const Home = () => {
         setIsLoggedIn(false);
     };
 
-    const getCurrentAcVideo = useCallback(() => {
-        fetch(process.env.REACT_APP_CROSSING_API_URL + `/api/current-video/${currentTime}`, {method: 'get'})
-            .then(response => response.json())
-            .then((data) => {
-                setUrl(data.url);
-                setTitle(data.title);
-            })
-            .catch(error => console.error('Error : ' + error.message));
+    const getCurrentAcVideo = useCallback(async () => {
+        setVideoStatus('loading');
+
+        try {
+            const response = await fetch(process.env.REACT_APP_CROSSING_API_URL + `/api/current-video/${currentTime}`, {method: 'get'});
+            if(!response.ok) {
+                throw new Error('Unable to fetch the current video');
+            }
+
+            const data = await response.json();
+            if(!data.url || !data.title) {
+                throw new Error('The current video response is incomplete');
+            }
+
+            setUrl(data.url);
+            setTitle(data.title);
+            setVideoStatus('ready');
+        } catch(error) {
+            console.error('Error loading current video:', error.message);
+            setVideoStatus('error');
+        }
     }, [currentTime]);
 
     useEffect(() => {
@@ -107,7 +121,7 @@ const Home = () => {
 
             </div>
             <div className='video-chat'>
-                <YtCrossingVideo title={title} url={url}></YtCrossingVideo>
+                <YtCrossingVideo title={title} url={url} loadStatus={videoStatus}></YtCrossingVideo>
                 {isLoggedIn && <ChatWindow userId={userId} username={userName}></ChatWindow>}
             </div>
         </div>
