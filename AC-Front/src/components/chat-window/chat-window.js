@@ -4,6 +4,32 @@ import './chat-window.css';
 import CrossingInput from '../crossing-input/crossing-input';
 import CrossingButton from '../crossing-button/crossing-button';
 
+const getMessageDate = (message) => {
+  const messageDate = new Date(message.createdAt || message.updatedAt || Date.now());
+  return Number.isNaN(messageDate.getTime()) ? new Date() : messageDate;
+};
+
+const getDateKey = (date) => `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+
+const formatDayHeading = (date) => {
+  const day = date.getDate();
+  const lastTwoDigits = day % 100;
+  const suffix = lastTwoDigits >= 11 && lastTwoDigits <= 13
+    ? 'th'
+    : ({ 1: 'st', 2: 'nd', 3: 'rd' }[day % 10] || 'th');
+  const weekdayAndMonth = date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+  }).replace(',', '');
+
+  return `${weekdayAndMonth} ${day}${suffix}`;
+};
+
+const formatMessageTime = (date) => date.toLocaleTimeString([], {
+  hour: 'numeric',
+  minute: '2-digit',
+});
+
 const socket = io.connect(process.env.REACT_APP_CROSSING_API_URL);
 
 function ChatWindow({ username, userId }) {
@@ -42,6 +68,7 @@ function ChatWindow({ username, userId }) {
             senderId: userId,
             senderName: username,
             text: chatMessage,
+          createdAt: new Date().toISOString(),
         }
 
         socket.emit('send_global_message', chatMessageData);
@@ -55,20 +82,36 @@ function ChatWindow({ username, userId }) {
       <h2>Crossing Chat</h2>
       
       <div className='chat-box'>
-        {chatHistory.map((msg, index) => (
-          <div 
-            key={index} 
-            className='chat-history'
-            style={{ 
-              textAlign: msg.senderId === userId ? 'right' : 'left',
-            }}
-          >
-            <strong>{msg.senderName}: </strong>
-            <span className='chat-bubble' style={{ backgroundColor: msg.senderId === userId ? '#daf7a6' : '#eee' }}>
-              {msg.text}
-            </span>
-          </div>
-        ))}
+        {chatHistory.map((msg, index) => {
+          const messageDate = getMessageDate(msg);
+          const previousMessage = chatHistory[index - 1];
+          const startsNewDay = !previousMessage
+            || getDateKey(getMessageDate(previousMessage)) !== getDateKey(messageDate);
+
+          return (
+            <React.Fragment key={msg._id || `${messageDate.toISOString()}-${index}`}>
+              {startsNewDay && (
+                <div className='chat-day-divider'>
+                  <span>{formatDayHeading(messageDate)}</span>
+                </div>
+              )}
+              <div
+                className='chat-history'
+                style={{ textAlign: msg.senderId === userId ? 'right' : 'left' }}
+              >
+                <div className='chat-message-meta'>
+                  <strong>{msg.senderName}: </strong>
+                  <time className='chat-time' dateTime={messageDate.toISOString()}>
+                    {formatMessageTime(messageDate)}
+                  </time>
+                </div>
+                <span className='chat-bubble' style={{ backgroundColor: msg.senderId === userId ? '#daf7a6' : '#eee' }}>
+                  {msg.text}
+                </span>
+              </div>
+            </React.Fragment>
+          );
+        })}
         <div ref={chatHistoryEndRef}/>
       </div>
 

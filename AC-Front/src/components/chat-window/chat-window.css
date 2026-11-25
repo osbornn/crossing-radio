@@ -36,6 +36,35 @@
     margin-top: 3%;
 }
 
+.chat-day-divider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0;
+    color: #555;
+    font-size: 13px;
+}
+
+.chat-day-divider::before,
+.chat-day-divider::after {
+    content: '';
+    flex: 1;
+    border-top: 1px dashed #b6a68b;
+}
+
+.chat-day-divider span {
+    white-space: nowrap;
+}
+
+.chat-message-meta {
+    margin-bottom: 4px;
+}
+
+.chat-time {
+    color: #666;
+    font-size: 12px;
+}
+
 .chat-bubble {
     padding: 5px 10px;
     border-radius: 10px;
