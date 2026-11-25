@@ -52,18 +52,24 @@
 
 @media (max-width: 767px) {
     .homepage-header {
-        flex-wrap: wrap;
-        justify-content: center;
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        gap: 8px;
         padding: 12px 16px;
     }
 
     .homepage-header h1 {
+        grid-column: 1;
+        grid-row: 1;
         width: 100%;
         margin: 12px 0 0;
         text-align: center;
     }
 
     .auth-margin {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: center;
         justify-content: center;
         flex-wrap: wrap;
         gap: 10px;
